@@ -298,6 +298,46 @@
         }
       }
     },
+    "src/TicTacToken.sol": {
+      "lastModificationDate": 1674603759496,
+      "contentHash": "0ec93cb988044c4e103aaf43ecd42775",
+      "sourceName": "src/TicTacToken.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [],
+      "versionRequirement": "=0.8.10",
+      "artifacts": {
+        "TicTacToken": {
+          "0.8.10+commit.fc410830.Darwin.appleclang": "TicTacToken.sol/TicTacToken.json"
+        }
+      }
+    },
     "src/test/FizzBuzz.t.sol": {
       "lastModificationDate": 1674581813489,
       "contentHash": "61b3f982105224718522b7ed9a61f3ac",
@@ -386,6 +426,50 @@
       "artifacts": {
         "GreeterTest": {
           "0.8.10+commit.fc410830.Darwin.appleclang": "Greeter.t.sol/GreeterTest.json"
+        }
+      }
+    },
+    "src/test/TicTacToken.t.sol": {
+      "lastModificationDate": 1674604213122,
+      "contentHash": "cce24b9f43cb121f103bd5fcd14fc8dd",
+      "sourceName": "src/test/TicTacToken.t.sol",
+      "solcConfig": {
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "metadata": {
+            "bytecodeHash": "ipfs",
+            "appendCBOR": true
+          },
+          "outputSelection": {
+            "*": {
+              "": [
+                "ast"
+              ],
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ]
+            }
+          },
+          "evmVersion": "london",
+          "libraries": {}
+        }
+      },
+      "imports": [
+        "lib/ds-test/src/test.sol",
+        "lib/forge-std/src/Vm.sol",
+        "src/TicTacToken.sol"
+      ],
+      "versionRequirement": "=0.8.10",
+      "artifacts": {
+        "TicTacTokenTest": {
+          "0.8.10+commit.fc410830.Darwin.appleclang": "TicTacToken.t.sol/TicTacTokenTest.json"
         }
       }
     }

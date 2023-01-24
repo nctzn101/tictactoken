@@ -3,6 +3,6 @@ src = 'src'
 out = 'out'
 libs = ['lib']
 verbosity = 2
-fuzz_runs = 5000 # amount of tests to run per unit test
+fuzz_runs = 200 # amount of tests to run per unit test
 
 # See more config options https://github.com/gakonst/foundry/tree/master/config

@@ -18,15 +18,21 @@ following the curriculum at https://book.tictactoken.co/
 
 
 ## week 1
-	[] setup Solidity environment using Foundry
-	[] write and run tests using `forge`
-	[] explore Solidity syntax
+	[done] setup Solidity environment using Foundry
+	[done] write and run tests using `forge`
+	[done] explore Solidity syntax
 	[] read through the Basics and Language Description of the Solidity documentation
 	[] implement one TDD kata (https://kata-log.rocks/tdd) in Solidity
 
 
-
-
+## week2
+	[] build a basic framework for a Tic Tac Toe game:
+		[] data structure for the board
+		[] functions to mark squares and check for a winner
+		[] basic input validations
+	[] continue testing using `forge` and `ds-test`
+	[] work through Cryptozombies exercises
+	[] read the Smart Contracts and Solidity chapter of Mastering Ethereum
 
 
 # Resources
@@ -51,4 +57,5 @@ following the curriculum at https://book.tictactoken.co/
 - run property-based tests to cover all edge cases:
 	forge interprets any unit test function that takes an argument as a property based test and run it multiple times with randomly assigned values
 
-##
+## Cryptozombies
+- https://cryptozombies.io/
