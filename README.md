@@ -39,6 +39,16 @@ following the curriculum at https://book.tictactoken.co/
 - run `foundryup` to install latest updates
 - `cast --to-ascii [address]`
 - `forge` manage projects, compile contracts, run tests
-`forge init [PROJECT_NAME]` creates new project from a template
+- `forge init [PROJECT_NAME]` creates new project from a template
+
+### foundry directory
+- `foundry.toml` configuration file
+- `lib/` project dependencies directory
+	- `ds-test` unit testing framework
+- `src/` for Solidity contracts, including tests
+	- `test/` directory for unit test contracts (`.t.sol` extension) 
+- `forge test` compiles the project and runs the tests
+- run property-based tests to cover all edge cases:
+	forge interprets any unit test function that takes an argument as a property based test and run it multiple times with randomly assigned values
 
 ##
