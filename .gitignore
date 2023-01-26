@@ -1,3 +1,3 @@
 /cache
-out/**
+/out
 .DS_Store
