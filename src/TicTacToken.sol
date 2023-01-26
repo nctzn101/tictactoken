@@ -12,22 +12,57 @@ contract TicTacToken {
 	uint256 internal constant O = 2;
 	uint256 internal _turns;
 
-		// view -> read-only
+	address public owner;
+	address public playerX;
+	address public playerO;
+
+	constructor(address _owner, address _playerX, address _playerO) {
+		owner = _owner;
+		playerX = _playerX;
+		playerO = _playerO;
+	}
+
+	// these were not in the tutorial
+	function msgSender() public view returns (address) {
+		return msg.sender;
+	}
+	// till here
+
+	// view -> read-only
 	function getBoard() public view returns (uint256[9] memory) {
 		return board;
 	}
 
+	modifier onlyOwner() {
+		require(msg.sender == owner, "Unauthorized");
+		_;
+	}
+
+	modifier onlyPlayer() {
+		require(_validPlayer(), "Unauthorized");
+		_;
+	}
+
 	// calldata represents the location for symbol; calldata - immutable area where function args are stored
-	function markSpace(uint256 space, uint256 symbol) public {
-		require(_validSymbol(symbol), "Invalid symbol");
+	function markSpace(uint256 space) public onlyPlayer {//, uint256 symbol) public {
+		uint256 symbol = _getSymbol();
+		////require(_validPlayer(), "Unauthorized");
+		//require(_validSymbol(symbol), "Invalid symbol");
 		require(_validTurn(symbol), "Not your turn");
 		require(_spaceClear(space), "Already marked");
+
 
 		//require(_compareStrings(board[space], ""), "Already marked"); // refactored
 		//require(_compareStrings(symbol, "X") || _compareStrings(symbol, "O"), "Invalid symbol"); // refactored
 		board[space] = symbol;
 		_turns++;
 
+	}
+
+	function _getSymbol() public view returns (uint256) {
+		if (msg.sender == playerX) return X;
+		if (msg.sender == playerO) return O;
+		return EMPTY;
 	}
 
 	// display current turn publicly
@@ -40,8 +75,10 @@ contract TicTacToken {
 		return board[space] == EMPTY; // _compareStrings(board[space], EMPTY);
 	} 
 
-	function _validSymbol(uint256 symbol) internal pure returns (bool) {
-		return symbol == X || symbol == O; // _compareStrings(symbol, X) || _compareStrings(symbol, O);
+	//
+
+	function _validPlayer() internal view returns (bool) {
+		return msg.sender == playerX || msg.sender == playerO;
 	}
 
 	// internal helper
@@ -54,7 +91,8 @@ contract TicTacToken {
 	function _validTurn(uint256 symbol) internal view returns (bool) {
 		// "X" goes when counter is even, "O" goes when counter is odd
 		// if yes (even) - X, if no - O
-		return symbol == currentTurn(); //(_turns % 2 == 0) ? _compareStrings(symbol, X) :_compareStrings(symbol, O);
+		//return symbol == currentTurn(); //(_turns % 2 == 0) ? _compareStrings(symbol, X) :_compareStrings(symbol, O);
+		return currentTurn() == _getSymbol();
 	}
 
 	// iterate over every combo
@@ -106,5 +144,13 @@ contract TicTacToken {
 
 	function _antiDiag() internal view returns (uint256) {
 		return board[2] * board[4] * board[6];
+	}
+
+	function resetBoard() public onlyOwner {
+		// require(
+		// 	// any owner can reset the board
+		// 	msg.sender == owner, "Unauthorized"
+		// 	);
+		delete board;
 	}
 }
